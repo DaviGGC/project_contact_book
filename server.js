@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const port = process.env.PORT || 3000;
 mongoose.connect(process.env.CONNECTIONSTRING)
     .then(() => {
         app.emit('Deu certo!!');
@@ -49,8 +50,9 @@ app.use(csrfMiddleware);
 app.use(routes);
 
 
+
 app.on('Deu certo!!', () => {
-    app.listen(3000, () => {
+    app.listen(port, () => {
         console.log('Acessar http://localhost:3000');
         console.log('Servidor executado na porta 3000');
     });
