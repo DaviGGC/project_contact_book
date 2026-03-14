@@ -1,0 +1,77 @@
+<%- include('includes/head') %>
+  <%- include('includes/nav') %>
+
+    <div class="container">
+      <div class="row my-5">
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-8 my-3">
+          <h1 class="text-center">Criar conta ou Entrar</h1>
+          <p class="text-center lead mb-5">Faça seu login ou crie sua conta:</p>
+
+          <%- include('includes/messages') %>
+
+            <div class="row d-flex align-items-stretch">
+
+              <div class="col-lg-6 mb-4">
+                <div class="card shadow-sm h-100 border-0">
+                  <div class="card-body p-4">
+                    <h4 class="card-title mb-3 text-dark">Faça seu cadastro</h4>
+                    <p class="card-text text-muted small">Ainda não tem conta? Junte-se a nós.</p>
+
+                    <div class="div-errors"></div>
+                    <form class="form-cadastro" action="/login/register" method="POST">
+                      <div class="form-group">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <label>E-mail</label>
+                        <input type="email" class="form-control form-control-lg" name="email"
+                          placeholder="exemplo@email.com">
+                      </div>
+
+                      <div class="form-group">
+                        <label>Senha</label>
+                        <input type="password" class="form-control form-control-lg" name="password"
+                          placeholder="Sua senha secreta">
+                      </div>
+
+                      <button type="submit" class="btn btn-success btn-block">Criar minha conta</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6 mb-4">
+                <div class="card shadow-sm h-100 border-0">
+                  <div class="card-body p-4">
+                    <h4 class="card-title text-dark mb-3">Faça seu login</h4>
+                    <p class="card-text text-muted small">Aproveite nossa plataforma, faça o seu login.</p>
+
+                    <div class="div-errors"></div>
+                    <form class="form-login" action="/login/login" method="POST">
+                      <div class="form-group">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <label>E-mail</label>
+                        <input type="email" class="form-control form-control-lg" name="email"
+                          placeholder="exemplo@email.com">
+                      </div>
+
+                      <div class="form-group">
+                        <label>Senha</label>
+                        <input type="password" class="form-control form-control-lg" name="password"
+                          placeholder="Sua senha">
+                      </div>
+
+                      <button type="submit" class="btn btn-primary btn-block">Entrar na conta</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+        </div>
+
+        <div class="col-lg-2"></div>
+      </div>
+    </div>
+
+    <%- include('includes/footer') %>
